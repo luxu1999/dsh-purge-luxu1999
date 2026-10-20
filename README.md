@@ -4,7 +4,7 @@
 
 <h1 align="center">⚔️ DeepSeek Harness cybersecurity red-team tool (dsh-purge)</h1>
 
-<p align="center"><strong>Version 1.1.71</strong></p>
+<p align="center"><strong>Version 1.1.72</strong></p>
 
 <p align="center">
   <em>DeepSeek Harness jailbreak: every model, swap prompts per model. Default prompt for 小码酱. Please star ⭐ If you build on this, see Attribution required.</em>
@@ -15,7 +15,7 @@
   <a href="https://github.com/YuJunZhiXue/dsh-purge/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-65a30d?style=flat" alt="MIT license"></a>
   <a href="https://awesome-dsh-plugin.com"><img src="https://awesome-dsh-plugin.com/badge.svg" alt="awesome · DSH plugin"></a>
   <a href="https://deepseek.stream/plugins/dsh-purge"><img src="https://img.shields.io/badge/Hub-dsh--purge-1a73e8" alt="DeepSeek Harness Hub"></a>
-  <a href="https://www.deepseek.com/harness/"><img src="https://img.shields.io/badge/dsh-0.2.0--rc.2-blue" alt="DSH"></a>
+  <a href="https://www.deepseek.com/harness/"><img src="https://img.shields.io/badge/dsh-0.2.1--rc.2-blue" alt="DSH"></a>
   <br>
   <img src="https://img.shields.io/badge/Node.js-%3E%3D18-339933?logo=node.js&logoColor=fff" alt="Node.js">
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000" alt="JavaScript">
@@ -31,7 +31,7 @@
 
 > **Updates paused.** The author has no steady income for now because of work. Maintenance is on hold: no new releases, issues / PRs are not taken, and new dsh versions are not guaranteed. The repo stays usable; see Sponsor below. When maintenance resumes, this README will say so.
 
-> **Official Web and the official desktop app are both supported.** Official `dsh web` uses profile `web`. The official desktop EXE (DeepSeek Harness **0.2.0-rc.2**) uses profile `desktop`. Install and Apply them separately. This release targets dsh 0.2 only. Older dsh builds need the matching older plugin. Community Desktop is not maintained.
+> **Official Web and the official desktop app are both supported.** Official `dsh web` uses profile `web`. The official desktop EXE (DeepSeek Harness **0.2.1-rc.2**) uses profile `desktop`. Install and Apply them separately. This release targets dsh 0.2 only. Older dsh builds need the matching older plugin. Community Desktop is not maintained.
 >
 > Adding the plugin to a profile does not patch the host. Click **dsh-purge** beside the session title → **Clean** → **Apply**. A successful Apply restarts; an unfinished Apply does not. After the restart, start a new chat — that is when the inject enters the session.
 >
@@ -160,12 +160,14 @@ WeChat name **「老张的ai科技」**, same handle as the live-room viewer boa
 
 ## Supported hosts
 
-The latest plugin supports **dsh 0.2** only — do not apply it to 0.1.x.
+- **dsh 0.2.1-rc.2** (official desktop EXE / official `dsh web`): use **1.1.72** or newer. This page installs that line. The plugin validates the host version from its own `dsh/package.json` at startup: an unsupported host is refused with a Chinese explanation instead of leaving half-applied patches.
+- **dsh 0.2.0-rc.2** (earlier 0.2 preview): use **1.1.40 – 1.1.71** — pick the tag on [Releases](https://github.com/YuJunZhiXue/dsh-purge/releases).
+- **dsh 0.1.7** (incl. rc.1 / rc.2): use **1.1.39** or older.
 
-- **dsh 0.2** (official desktop **0.2.0-rc.2** / official `dsh web`): use **1.1.40** or newer. This page installs that line.
-- **dsh 0.1.7** (incl. rc.1 / rc.2): use **1.1.39** or older — pick the tag on [Releases](https://github.com/YuJunZhiXue/dsh-purge/releases).
+Unmatched patches stay pending or skipped; nothing is rewritten blindly. Patches that no longer apply to 0.2.1 are reported as **removed** or **unsupported by this host**:
 
-Unmatched patches stay pending or skipped; nothing is rewritten blindly.
+- **Removed**: `#56` `#77` (rewind patches on the conversation panel — the plugin no longer touches host client bundles, so host module revisions never invalidate).
+- **Unsupported by this host**: `#28` `#30` `#31` `#64` `#65` `#71` `#76` (`liangshen` presets and the `dsh-hooks-claude-code` / `dsh-hooks-codex` packages do not exist in 0.2.1).
 
 ---
 
@@ -192,7 +194,7 @@ Hub one-click on [dsh-plugin.org](https://dsh-plugin.org/plugins/yujunzhixue/dsh
 For the desktop client you can also click the button (`dsh://` deep link):
 
 <p align="center">
-  <a href="dsh://plugin/install?id=dsh-purge&name=dsh-purge&version=1.1.71&repo=YuJunZhiXue%2Fdsh-purge&permissions=%E7%B3%BB%E7%BB%9F%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%B3%A8%E5%85%A5%2C%E6%9C%AC%E6%9C%BA%E8%A1%A5%E4%B8%81%2C%E8%AE%BE%E7%BD%AE%E9%A1%B5&downloadUrl=https%3A%2F%2Fgithub.com%2FYuJunZhiXue%2Fdsh-purge%2Farchive%2Frefs%2Fheads%2Fmaster.tar.gz"><strong>Install in desktop client</strong></a>
+  <a href="dsh://plugin/install?id=dsh-purge&name=dsh-purge&version=1.1.72&repo=YuJunZhiXue%2Fdsh-purge&permissions=%E7%B3%BB%E7%BB%9F%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%B3%A8%E5%85%A5%2C%E6%9C%AC%E6%9C%BA%E8%A1%A5%E4%B8%81%2C%E8%AE%BE%E7%BD%AE%E9%A1%B5&downloadUrl=https%3A%2F%2Fgithub.com%2FYuJunZhiXue%2Fdsh-purge%2Farchive%2Frefs%2Fheads%2Fmaster.tar.gz"><strong>Install in desktop client</strong></a>
 </p>
 
 ### After the command: three steps
@@ -463,6 +465,8 @@ The box sits under Prompt. If the dock does not show it yet, quit DeepSeek Harne
 
 ## Local checks
 
+Syntax only (never touches a host):
+
 ```sh
 node --check lib/index.js
 node --check lib/core.js
@@ -474,6 +478,21 @@ node --check lib/rewind.js
 node --check lib/skills.js
 node --check client.js
 ```
+
+Patch and UI-contract checks (need an **unpacked host snapshot**, e.g. extract `resources/app.asar` to `../host/app`; the scripts only write into a temporary shadow copy, never the host itself):
+
+```sh
+# T1: dry-run every patch + node --check + YAML parse + idempotent second apply + byte-identical revert + host untouched
+node scripts/verify-host.mjs --host ../host/app --json ../analysis/verify-host.json
+
+# UI contract rules R1-R8: no single-kind slot registration, no host client-bundle rewrites, slot/selector/timer allowlists
+node scripts/audit-ui-contract.mjs --host ../host/app
+
+# T2: post-conditions per patch (must / mustNot assertions)
+node scripts/t2-postconditions.mjs --host ../host/app --json ../analysis/t2.json
+```
+
+The same three run as `npm run test:host` / `npm run test:ui` / `npm run test:post` (pass your own `--host`).
 
 ---
 

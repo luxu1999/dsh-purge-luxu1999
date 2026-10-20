@@ -135,6 +135,7 @@ window.__ModuleLoader__.load({ id: "dsh-purge", factory: (require) => {
 			"dock.redteam": "红队模式",
 			"dock.full": "全面浏览",
 			"dock.close": "收起",
+			"dock.reset": "复位",
 			"dock.unauthorized": "未授权",
 			"welcome.title": "用户须知",
 			"welcome.lead": "首次安装本插件时请阅读以下说明。确认后本窗不再弹出。",
@@ -475,6 +476,7 @@ window.__ModuleLoader__.load({ id: "dsh-purge", factory: (require) => {
 			"dock.redteam": "Red team",
 			"dock.full": "Full view",
 			"dock.close": "Collapse",
+			"dock.reset": "Reset",
 			"dock.unauthorized": "Unauthorized",
 			"welcome.title": "User notice",
 			"welcome.lead": "Please read this on first install. After you confirm, it will not appear again.",
@@ -887,7 +889,7 @@ window.__ModuleLoader__.load({ id: "dsh-purge", factory: (require) => {
 .dshp-modal h4{margin:0 0 8px;font-family:var(--dshp-display);font-size:18px;font-weight:500}
 .dshp-modal p{margin:0 0 16px;font-size:13.5px;line-height:1.55}
 .dshp-modal-ops{display:flex;justify-content:flex-end;gap:8px}
-.dshp-restart-mask{position:fixed;inset:0;z-index:12000;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.62);font-family:"Yu Gothic UI","Hiragino Sans GB","Source Han Sans SC","Microsoft YaHei UI",system-ui,sans-serif}
+.dshp-restart-mask{position:fixed;inset:0;z-index:970;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.62);font-family:"Yu Gothic UI","Hiragino Sans GB","Source Han Sans SC","Microsoft YaHei UI",system-ui,sans-serif}
 .dshp-restart-card{width:min(420px,100%);box-sizing:border-box;padding:22px 22px 18px;border-radius:14px;background:var(--dsw-alias-bg-layer-1,#fffcf7);color:var(--dsw-alias-label-primary,#16140f);border:1px solid var(--dsw-alias-border-l1,#c9c3b6);box-shadow:0 18px 50px rgba(0,0,0,.35)}
 .dshp-restart-card h4{margin:0 0 10px;font-family:inherit;font-size:20px;font-weight:650;line-height:1.35;color:inherit}
 .dshp-restart-card p{margin:0 0 18px;font-size:16px;font-weight:500;line-height:1.65;color:inherit}
@@ -943,9 +945,9 @@ body[data-ds-dark-theme] .dshp-restart-card .dshp-btn-primary,body[data-ds-dark-
 @media (max-width:640px){.dshp-metrics{grid-template-columns:1fr}.dshp-ruleitem{flex-wrap:wrap}.dshp-rule-ops{width:100%;justify-content:flex-end}}
 @media (prefers-reduced-motion:reduce){.dshp-btn,.dshp-bar>i{transition:none}.dshp-skel{animation:none}}
 
-.dshp-dock{position:fixed;top:12px;right:12px;z-index:10050;display:flex;flex-direction:column;width:var(--dshp-dock-w,620px);height:var(--dshp-dock-h,72vh);min-width:380px;min-height:320px;max-width:calc(100vw - 16px);max-height:calc(100vh - 16px);box-sizing:border-box;background:color-mix(in srgb,var(--dsw-alias-bg-layer-1,var(--dshp-paper,#1c1c1c)) 52%,transparent);backdrop-filter:blur(22px) saturate(1.35);-webkit-backdrop-filter:blur(22px) saturate(1.35);border:1px solid color-mix(in srgb,var(--dsw-alias-border-l1,var(--dshp-line,#555)) 65%,transparent);border-radius:12px;box-shadow:0 18px 48px color-mix(in srgb,#000 30%,transparent),0 0 0 1px color-mix(in srgb,#fff 6%,transparent);pointer-events:auto;color:var(--dsw-alias-label-primary,var(--dshp-ink,#f2f2f2));overflow:visible}
+.dshp-dock{position:fixed;top:12px;right:12px;z-index:900;display:flex;flex-direction:column;width:var(--dshp-dock-w,620px);height:var(--dshp-dock-h,72vh);min-width:380px;min-height:320px;max-width:calc(100vw - 16px);max-height:calc(100vh - 16px);box-sizing:border-box;background:color-mix(in srgb,var(--dsw-alias-bg-layer-1,var(--dshp-paper,#1c1c1c)) 52%,transparent);backdrop-filter:blur(22px) saturate(1.35);-webkit-backdrop-filter:blur(22px) saturate(1.35);border:1px solid color-mix(in srgb,var(--dsw-alias-border-l1,var(--dshp-line,#555)) 65%,transparent);border-radius:12px;box-shadow:0 18px 48px color-mix(in srgb,#000 30%,transparent),0 0 0 1px color-mix(in srgb,#fff 6%,transparent);pointer-events:auto;color:var(--dsw-alias-label-primary,var(--dshp-ink,#f2f2f2));overflow:visible}
 .dshp-dock[data-open="0"]{display:none}
-.dshp-launch{position:fixed;right:16px;bottom:16px;z-index:10040;appearance:none;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border:1px solid color-mix(in srgb,var(--dsw-alias-brand-primary,#6dbf8c) 55%,transparent);border-radius:999px;background:color-mix(in srgb,var(--dsw-alias-bg-layer-1,#1c1c1c) 72%,transparent);color:var(--dsw-alias-label-primary,#f2f2f2);cursor:pointer;font:13px/1 inherit;box-shadow:0 8px 22px color-mix(in srgb,#000 28%,transparent);pointer-events:auto}
+.dshp-launch{position:fixed;right:16px;bottom:16px;z-index:880;appearance:none;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border:1px solid color-mix(in srgb,var(--dsw-alias-brand-primary,#6dbf8c) 55%,transparent);border-radius:999px;background:color-mix(in srgb,var(--dsw-alias-bg-layer-1,#1c1c1c) 72%,transparent);color:var(--dsw-alias-label-primary,#f2f2f2);cursor:pointer;font:13px/1 inherit;box-shadow:0 8px 22px color-mix(in srgb,#000 28%,transparent);pointer-events:auto}
 .dshp-launch:hover{border-color:var(--dsw-alias-brand-primary,#6dbf8c);background:color-mix(in srgb,var(--dsw-alias-brand-primary,#6dbf8c) 18%,transparent)}
 .dshp-launch[data-open="1"]{display:none}
 .dshp-dock-head{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid color-mix(in srgb,var(--dsw-alias-border-l1,var(--dshp-line,#555)) 55%,transparent);background:transparent;cursor:grab;user-select:none;touch-action:none;color:var(--dsw-alias-label-primary,var(--dshp-ink,#f2f2f2));border-radius:12px 12px 0 0}
@@ -989,8 +991,8 @@ body:not([data-ds-dark-theme]) .dshp-auth-ops button.primary{background:var(--ds
 .dshp-dock-resize-r{right:-2px;top:0;bottom:22px;width:10px;cursor:ew-resize;background:transparent}
 .dshp-dock-resize-b{left:10px;right:22px;bottom:-2px;height:10px;cursor:ns-resize;background:transparent}
 .dshp-dock-resize-b:hover{background:color-mix(in srgb,var(--dsw-alias-brand-primary,#6dbf8c) 35%,transparent)}
-.dshp-auth-mask{position:fixed;inset:0;z-index:10100;background:rgba(0,0,0,.62);display:flex;align-items:center;justify-content:center;padding:20px;pointer-events:auto}
-.dshp-env-gate{z-index:10200}
+.dshp-auth-mask{position:fixed;inset:0;z-index:950;background:rgba(0,0,0,.62);display:flex;align-items:center;justify-content:center;padding:20px;pointer-events:auto}
+.dshp-env-gate{z-index:960}
 .dshp-auth-modal{width:min(680px,100%);max-height:min(88vh,820px);display:flex;flex-direction:column;gap:10px;padding:16px;border:1px solid var(--dsw-alias-border-l1,#333);border-radius:12px;background:var(--dsw-alias-bg-layer-1,#1a1a1a);color:var(--dsw-alias-label-primary,#eee)}
 .dshp-auth-modal h2{margin:0;font-size:16px;font-weight:600}
 .dshp-auth-warn{padding:8px 10px;border-radius:8px;background:#3a2e18;color:#f0d48a;font-size:13px}
@@ -1021,6 +1023,7 @@ body:not([data-ds-dark-theme]) .dshp-auth-ops button.primary{background:var(--ds
 .dshp-tab-btn:hover{color:var(--dsw-alias-label-primary,currentColor)}
 .dshp-tab-btn.on{color:var(--dsw-alias-brand-primary,#6dbf8c)}
 .dshp-tab-btn.on:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;border-radius:2px;background:var(--dsw-alias-brand-primary,#6dbf8c)}
+.dshp-dock-entry{display:flex;align-items:center;justify-content:flex-end;gap:6px;padding:0 2px 4px}
 /* 玻璃跟随宿主颜色。字重和底的不透明度分开：壳透，字坐在更实的一层上。 */
 .dshp-dock{font-family:"Segoe UI","Microsoft YaHei UI","PingFang SC","Noto Sans SC",system-ui,sans-serif;font-size:14px;line-height:1.6;font-weight:500;-webkit-font-smoothing:antialiased;text-shadow:none}
 .dshp-dock[data-theme="white"],.dshp-dock[data-theme="dusk"]{background:linear-gradient(165deg,color-mix(in srgb,var(--dsw-alias-bg-layer-1,#fff) 50%,transparent),color-mix(in srgb,var(--dsw-alias-brand-primary,#6d8f78) 18%,transparent) 46%,color-mix(in srgb,var(--dsw-alias-bg-layer-2,#fff) 28%,transparent))!important;backdrop-filter:blur(26px) saturate(1.45)!important;-webkit-backdrop-filter:blur(26px) saturate(1.45)!important;color:var(--dshp-ink)!important;border:1px solid color-mix(in srgb,var(--dsw-alias-brand-primary,#6d8f78) 36%,transparent)!important;box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 42%,transparent),0 18px 44px color-mix(in srgb,#000 18%,transparent)!important}
@@ -2791,18 +2794,100 @@ body:not([data-ds-dark-theme]) .dshp-auth-ops button.primary{background:var(--ds
 			return detectHostTheme();
 		}
 
+		/* ------------------------------------------------------------------
+		 * 统一轮询调度器（0.2.1 适配）
+		 * 把原先多路 setInterval（400/1000/1200/1500/5000/25000ms）收敛成一条
+		 * setTimeout 链：
+		 *  - document.hidden 时整条链停摆，visibilitychange 恢复，隐藏页面不跑；
+		 *  - 每个任务最短间隔 1s，任务自身异常只记日志、不影响其它任务；
+		 *  - add() 返回幂等 disposer，全部经 ctx.effect / React effect 注销。
+		 * ------------------------------------------------------------------ */
+		const pollScheduler = (() => {
+			const tasks = new Map();
+			const MIN_EVERY = 1000;
+			let seq = 0;
+			let timer = null;
+			let listening = false;
+			const hidden = () => typeof document !== "undefined" && document.hidden === true;
+			const stopTimer = () => {
+				if (timer === null) return;
+				try { window.clearTimeout(timer); } catch { /* ignore */ }
+				timer = null;
+			};
+			const nextDelay = () => {
+				const now = Date.now();
+				let delay = Infinity;
+				tasks.forEach((task) => { delay = Math.min(delay, task.due - now); });
+				if (!Number.isFinite(delay)) delay = MIN_EVERY;
+				/* 下限 50ms、上限 1h：一条 setTimeout 链按最近任务到期时间自走 */
+				return Math.max(50, Math.min(delay, 60 * 60 * 1000));
+			};
+			const arm = () => {
+				if (timer !== null || tasks.size === 0 || hidden()) return;
+				timer = window.setTimeout(pump, nextDelay());
+			};
+			const pump = () => {
+				timer = null;
+				if (tasks.size === 0) return;
+				if (hidden()) return; /* 隐藏页面：不跑，等 visibilitychange 恢复 */
+				const now = Date.now();
+				for (const task of Array.from(tasks.values())) {
+					if (!tasks.has(task.id) || task.due > now) continue;
+					task.due = now + task.every;
+					try {
+						const out = task.fn();
+						if (out && typeof out.catch === "function") out.catch(() => {});
+					} catch (err) {
+						try { console.warn("[dsh-purge] 定时任务执行失败：", err); } catch { /* ignore */ }
+					}
+				}
+				arm();
+			};
+			const onVisibility = () => {
+				if (hidden()) stopTimer();
+				else if (timer === null) pump();
+			};
+			const listen = (on) => {
+				if (typeof document === "undefined") return;
+				if (on && !listening) {
+					listening = true;
+					document.addEventListener("visibilitychange", onVisibility);
+				} else if (!on && listening) {
+					listening = false;
+					document.removeEventListener("visibilitychange", onVisibility);
+				}
+			};
+			return {
+				/** 注册一个轮询任务；返回幂等 disposer。 */
+				add(fn, every) {
+					const id = ++seq;
+					const interval = Math.max(MIN_EVERY, Number(every) || MIN_EVERY);
+					tasks.set(id, { id: id, fn: fn, every: interval, due: Date.now() + interval });
+					listen(true);
+					arm();
+					let disposed = false;
+					return () => {
+						if (disposed) return;
+						disposed = true;
+						tasks.delete(id);
+						if (tasks.size === 0) {
+							stopTimer();
+							listen(false);
+						}
+					};
+				},
+				/** 当前任务数（诊断用，不参与行为）。 */
+				size() { return tasks.size; },
+			};
+		})();
+
 		function SettingsRoot(props) {
 			const t = typeof props.t === "function" ? props.t : ((key) => key);
 			const [theme, setTheme] = useState(readTheme);
 			useEffect(() => {
 				let cancelled = false;
-				let timer = 0;
 				const syncFromHost = () => {
 					if (!cancelled) setTheme(detectHostTheme());
-				};
-				const syncSoon = () => {
-					if (timer) window.clearTimeout(timer);
-					timer = window.setTimeout(syncFromHost, 50);
 				};
 				syncFromHost();
 				let mq;
@@ -2810,17 +2895,13 @@ body:not([data-ds-dark-theme]) .dshp-auth-ops button.primary{background:var(--ds
 					mq = window.matchMedia?.("(prefers-color-scheme: dark)");
 					mq?.addEventListener?.("change", syncFromHost);
 				} catch { /* ignore */ }
-				let obs;
-				try {
-					obs = new MutationObserver(syncSoon);
-					if (document.body) obs.observe(document.body, { attributes: true, attributeFilter: ["data-ds-dark-theme", "class", "style"] });
-					obs.observe(document.documentElement, { attributes: true, attributeFilter: ["data-ds-dark-theme", "class", "style"] });
-				} catch { /* ignore */ }
+				/* 0.2.1：不再 MutationObserver 盯宿主 <html>/<body>（会跟 React 抢主人），
+				 * 改由统一调度器低频对齐主题；页面隐藏时自动暂停。 */
+				const stopPoll = pollScheduler.add(syncFromHost, 2000);
 				return () => {
 					cancelled = true;
-					if (timer) window.clearTimeout(timer);
 					try { mq?.removeEventListener?.("change", syncFromHost); } catch { /* ignore */ }
-					try { obs?.disconnect(); } catch { /* ignore */ }
+					stopPoll();
 				};
 			}, []);
 			translate = t;
@@ -2838,7 +2919,7 @@ body:not([data-ds-dark-theme]) .dshp-auth-ops button.primary{background:var(--ds
 .dshp-rewind:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12));color:var(--dsw-alias-label-primary,currentColor)}
 .dshp-rewind:disabled{opacity:.4;cursor:default}
 .dshp-rewind svg{display:block}
-.dshp-rewind-menu{position:fixed;z-index:2147483000;box-sizing:border-box;min-width:220px;padding:4px;border:0;border-radius:12px;background:var(--dsw-specific-menu,#fff);color:var(--dsw-alias-label-primary,#1a1a1a);--dsw-elevation-stroke-color:var(--dsw-alias-border-l1);box-shadow:var(--dsw-elevation-prominent,0 8px 24px rgba(0,0,0,.16));transform:translateY(-100%)}
+.dshp-rewind-menu{position:fixed;z-index:940;box-sizing:border-box;min-width:220px;padding:4px;border:0;border-radius:12px;background:var(--dsw-specific-menu,#fff);color:var(--dsw-alias-label-primary,#1a1a1a);--dsw-elevation-stroke-color:var(--dsw-alias-border-l1);box-shadow:var(--dsw-elevation-prominent,0 8px 24px rgba(0,0,0,.16));transform:translateY(-100%)}
 body[data-ds-dark-theme] .dshp-rewind-menu{background:var(--dsw-specific-menu,#32312d);color:var(--dsw-alias-label-primary,#e6e2db);--dsw-elevation-stroke-color:var(--dsw-alias-border-l1,#3f3d38);box-shadow:var(--dsw-elevation-prominent,0 10px 28px rgba(0,0,0,.45))}
 .dshp-rewind-item{display:flex;flex-direction:column;gap:2px;width:100%;padding:8px 10px;border:0;border-radius:8px;background:transparent;color:inherit;text-align:left;cursor:pointer;font:12px/1.3 var(--ds-font-sans,system-ui,sans-serif)}
 .dshp-rewind-item:hover{background:var(--dsw-alias-interactive-bg-hover,rgba(127,127,127,.12))}
@@ -3181,10 +3262,10 @@ body[data-ds-dark-theme] .dshp-rewind-item span{color:var(--dsw-alias-label-tert
 						.catch(() => {});
 				};
 				tick();
-				const timer = window.setInterval(tick, 1200);
+				const stopWatch = pollScheduler.add(tick, 1200);
 				return () => {
 					cancelled = true;
-					window.clearInterval(timer);
+					stopWatch();
 				};
 			}, [sessionId]);
 
@@ -3469,8 +3550,8 @@ body[data-ds-dark-theme] .dshp-rewind-item span{color:var(--dsw-alias-label-tert
 					scheduleComposerFill(data.sessionId, text);
 				} catch { /* ignore */ }
 			};
-			const timer = window.setInterval(tick, 1200);
-			return () => window.clearInterval(timer);
+			const stopWatch = pollScheduler.add(tick, 1200);
+			return () => stopWatch();
 		}
 
 		/* __DSH_PURGE_DRILL_BEGIN__ */
@@ -4025,7 +4106,7 @@ body[data-ds-dark-theme] .dshp-rewind-item span{color:var(--dsw-alias-label-tert
   color:var(--dsw-alias-label-secondary)}
 .rt-shot-cap{display:flex;align-items:center;gap:5px;font-size:10.5px;overflow-wrap:anywhere}
 .rt-shot-label{color:var(--dsw-alias-label-secondary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:170px}
-.rt-shot-zoom{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.82);display:flex;flex-direction:column;
+.rt-shot-zoom{position:fixed;inset:0;z-index:980;background:rgba(0,0,0,.82);display:flex;flex-direction:column;
   align-items:center;justify-content:center;gap:10px;cursor:zoom-out;padding:18px}
 .rt-shot-zoom img{max-width:96vw;max-height:86vh;border-radius:6px;box-shadow:0 18px 48px rgba(0,0,0,.5)}
 .rt-shot-zoom-cap{color:#e5e7eb;font-size:12px;text-align:center;max-width:90vw;overflow-wrap:anywhere}`    /* ---------------------------------------------------------- 桥接与状态 */
@@ -4210,10 +4291,10 @@ body[data-ds-dark-theme] .dshp-rewind-item span{color:var(--dsw-alias-label-tert
         ta.setAttribute('readonly', '')
         ta.style.position = 'fixed'
         ta.style.left = '-9999px'
-        document.body.appendChild(ta)
+        document.body.append(ta)
         ta.select()
         const okFlag = document.execCommand('copy')
-        document.body.removeChild(ta)
+        ta.remove()
         return okFlag === true
       } catch (e) { return false }
     }
@@ -6695,8 +6776,8 @@ body[data-ds-dark-theme] .dshp-rewind-item span{color:var(--dsw-alias-label-tert
       React.useEffect(() => { seq.current += 1; load() }, [eng, refreshKey])
       React.useEffect(() => {
         if (!eng || !auto) return undefined
-        const timer = setInterval(load, 5000)
-        return () => clearInterval(timer)
+        /* 0.2.1：轮询统一交给 pollScheduler（页面隐藏时自动暂停） */
+        return pollScheduler.add(load, 5000)
       }, [eng, auto, refreshKey])
 
       const testing = (data && data.testing) || []
@@ -7168,8 +7249,10 @@ body[data-ds-dark-theme] .dshp-rewind-item span{color:var(--dsw-alias-label-tert
       const [msg, setMsg] = React.useState(null)
       const [countdown, setCountdown] = React.useState(0)
       const countdownRef = React.useRef(null)
+      /* 倒计时不用 setInterval（0.2.1 静态规则只允许统一调度器持有计时器）：
+       * 改用一次性 setTimeout 自链，卸载/关闭弹窗时清掉当前链头。 */
       const clearCountdown = React.useCallback(() => {
-        if (countdownRef.current) { try { clearInterval(countdownRef.current) } catch { /* ignore */ } }
+        if (countdownRef.current) { try { clearTimeout(countdownRef.current) } catch { /* ignore */ } }
         countdownRef.current = null
       }, [])
       React.useEffect(() => () => clearCountdown(), [clearCountdown])
@@ -7209,12 +7292,18 @@ body[data-ds-dark-theme] .dshp-rewind-item span{color:var(--dsw-alias-label-tert
           /* 重启会断开这个页面：倒计时提示用户稍后刷新 */
           setCountdown(6)
           clearCountdown()
-          countdownRef.current = setInterval(() => {
-            setCountdown((n) => {
-              if (n <= 1) { clearCountdown(); window.location.reload(); return 0 }
-              return n - 1
-            })
-          }, 1000)
+          let left = 6
+          const step = () => {
+            left -= 1
+            if (left <= 0) {
+              clearCountdown()
+              window.location.reload()
+              return
+            }
+            setCountdown(left)
+            countdownRef.current = window.setTimeout(step, 1000)
+          }
+          countdownRef.current = window.setTimeout(step, 1000)
         }, (e) => { setBusy(false); setMsg({ err: String((e && e.message) || e) }) })
       }
 
@@ -7470,8 +7559,9 @@ body[data-ds-dark-theme] .dshp-rewind-item span{color:var(--dsw-alias-label-tert
             .finally(() => { digestInflight = false })
         }
         tick()
-        const timer = window.setInterval(tick, 25000)
-        return () => { alive = false; window.clearInterval(timer) }
+        /* 0.2.1：25s 摘要刷新也走统一调度器，隐藏页面不跑 */
+        const stopDigest = pollScheduler.add(tick, 25000)
+        return () => { alive = false; stopDigest() }
       }, [eng, refreshKey])
 
       /**
@@ -7813,30 +7903,77 @@ body[data-ds-dark-theme] .dshp-rewind-item span{color:var(--dsw-alias-label-tert
 		syncDrillGrant();
 
 		const DOCK_GEOM_KEY = "dsh-purge-dock-geom-v4";
-		/* 默认停在右上，底边留在输入框上面。拖动之后停在用户松开的位置，只保证不拖出窗口。 */
+		/* 默认停在右上，底边留在输入框上面。拖动之后停在用户松开的位置，只保证不拖出窗口、不压住输入框。 */
 		const DOCK_COMPOSER_CLEAR = 172;
+
+		/** 读宿主 composer 的顶边（找不到就按默认留白算），用于避免面板压住输入框。 */
+		function composerSafeBottom() {
+			const vh = typeof window !== "undefined" ? window.innerHeight : 800;
+			try {
+				const el = document.querySelector("[data-composer-seat], [data-composer-card]");
+				if (el && typeof el.getBoundingClientRect === "function") {
+					const rect = el.getBoundingClientRect();
+					if (rect && Number.isFinite(rect.top) && rect.top > 0 && rect.top < vh) {
+						return Math.max(24, Math.round(rect.top - 8));
+					}
+				}
+			} catch { /* ignore */ }
+			return Math.max(24, vh - DOCK_COMPOSER_CLEAR);
+		}
+
+		/** localStorage 里的几何一律校验类型/范围；非法（字符串、NaN、负数、离谱值）直接丢弃。 */
+		function sanitizeDockGeom(raw) {
+			if (!raw || typeof raw !== "object") return null;
+			const out = {};
+			for (const key of ["x", "y", "w", "h"]) {
+				const value = raw[key];
+				if (typeof value !== "number" || !Number.isFinite(value) || value < -20000 || value > 20000) {
+					try { console.warn("[dsh-purge] 丢弃非法 dock 几何字段 " + key + "：", value); } catch { /* ignore */ }
+					return null;
+				}
+				out[key] = value;
+			}
+			if (out.w < 240 || out.h < 160) {
+				try { console.warn("[dsh-purge] 丢弃过小的 dock 几何：", out); } catch { /* ignore */ }
+				return null;
+			}
+			return out;
+		}
+
 		function defaultDockGeom() {
 			const vw = typeof window !== "undefined" ? window.innerWidth : 1280;
 			const vh = typeof window !== "undefined" ? window.innerHeight : 800;
 			const w = Math.min(620, Math.max(380, vw - 16));
 			const y = 48;
-			const h = Math.max(240, Math.min(640, vh - y - DOCK_COMPOSER_CLEAR));
+			const safeBottom = composerSafeBottom();
+			const h = Math.max(240, Math.min(640, safeBottom - y - 8, vh - y - 16));
 			return { x: Math.max(8, vw - w - 8), y: y, w: w, h: h };
 		}
 		function clampDockGeom(g) {
 			const vw = typeof window !== "undefined" ? window.innerWidth : 1280;
 			const vh = typeof window !== "undefined" ? window.innerHeight : 800;
+			const safeBottom = composerSafeBottom();
 			const w = Math.min(Math.max(380, Number(g && g.w) || 620), Math.max(380, vw - 16));
-			const h = Math.min(Math.max(240, Number(g && g.h) || 520), Math.max(240, vh - 16));
+			const maxH = Math.max(240, Math.min(vh - 16, safeBottom - 8));
+			const h = Math.min(Math.max(240, Number(g && g.h) || 520), maxH);
 			const x = Math.min(Math.max(8, Number(g && g.x) || 8), Math.max(8, vw - w - 8));
-			const y = Math.min(Math.max(8, Number(g && g.y) || 8), Math.max(8, vh - Math.min(h, vh - 16) - 8));
+			let y = Math.min(Math.max(8, Number(g && g.y) || 8), Math.max(8, vh - h - 8));
+			/* 与 composer 矩形相交 → 整体上移（顶到 8px 为止） */
+			if (y + h > safeBottom) y = Math.max(8, safeBottom - h);
 			return { x: x, y: y, w: w, h: h };
 		}
 		function loadDockGeom() {
 			try {
 				const raw = JSON.parse(window.localStorage.getItem(DOCK_GEOM_KEY) || "null");
-				if (raw && typeof raw === "object") return clampDockGeom(raw);
-			} catch { /* ignore */ }
+				const clean = sanitizeDockGeom(raw);
+				if (clean) return clampDockGeom(clean);
+				if (raw !== null) {
+					try { console.warn("[dsh-purge] dock 几何无效，已重置为默认位置"); } catch { /* ignore */ }
+					try { window.localStorage.removeItem(DOCK_GEOM_KEY); } catch { /* ignore */ }
+				}
+			} catch (err) {
+				try { console.warn("[dsh-purge] 读取 dock 几何失败，使用默认值：", err); } catch { /* ignore */ }
+			}
 			return clampDockGeom(defaultDockGeom());
 		}
 		function saveDockGeom(g) {
@@ -7909,13 +8046,21 @@ body[data-ds-dark-theme] .dshp-rewind-item span{color:var(--dsw-alias-label-tert
 			const [checks, setChecks] = useState({ read: false, scope: false, ban: false });
 			const legalRef = useRef(null);
 			useEffect(() => {
-				const id = window.setInterval(() => {
-					setLeft((n) => {
-						if (n <= 1) { window.clearInterval(id); return 0; }
-						return n - 1;
-					});
-				}, 1000);
-				return () => window.clearInterval(id);
+				let left = 10;
+				let timer = null;
+				let alive = true;
+				const step = () => {
+					left -= 1;
+					if (!alive) return;
+					if (left <= 0) { setLeft(0); return; }
+					setLeft(left);
+					timer = window.setTimeout(step, 1000);
+				};
+				timer = window.setTimeout(step, 1000);
+				return () => {
+					alive = false;
+					if (timer) window.clearTimeout(timer);
+				};
 			}, []);
 			useEffect(() => {
 				const el = legalRef.current;
@@ -8103,34 +8248,6 @@ body[data-ds-dark-theme] .dshp-rewind-item span{color:var(--dsw-alias-label-tert
 			return false;
 		}
 
-		function looksLikeSendControl(el) {
-			if (!el || el.nodeType !== 1) return false;
-			const btn = el.closest("button, [role='button']");
-			if (!btn) return false;
-			if (btn.closest(".dshp-dock, .dshp-auth-mask, .rt-dock, .dshp-env-gate")) return false;
-			const label = [
-				btn.getAttribute("aria-label"),
-				btn.getAttribute("title"),
-				btn.getAttribute("data-testid"),
-				btn.textContent,
-			].filter(Boolean).join(" ");
-			if (/停止|Stop/i.test(label) && !/发送|Send/i.test(label)) return false;
-			if (/发送|Submit|Send(?!\s*feedback)/i.test(label)) return true;
-			/* composer 主按钮：data-composer-card 内的 primary */
-			try {
-				const card = btn.closest("[data-composer-card], [data-composer-seat]");
-				if (card) {
-					const cls = String(btn.className || "");
-					if (/primary/i.test(cls) && btn.querySelector("svg")) return true;
-				}
-			} catch { /* ignore */ }
-			if (btn.type === "submit") {
-				const form = btn.closest("form");
-				if (form && form.querySelector("textarea, [contenteditable='true']")) return true;
-			}
-			return false;
-		}
-
 		function fetchEnvAdaptStatus() {
 			return fetch("/redteam/api", {
 				method: "POST",
@@ -8139,150 +8256,211 @@ body[data-ds-dark-theme] .dshp-rewind-item span{color:var(--dsw-alias-label-tert
 			}).then((r) => r.json()).catch(() => null);
 		}
 
-		/** 同步探测的占位：不再做同步 XHR（会卡 UI 主线程、Chrome 已逐步弃用）。
-		 * 调用方 mustBlockSubmit 在 cache 过期/缺失时按"未知→保守 block"处理,
-		 * 同时 EnvAdaptSendGate 的 useEffect 轮询会异步 refresh,下次调用即可放行。 */
-		function fetchEnvAdaptStatusSync() { return null; }
+		/* ==== 红队环境适配发送门禁（0.2.1 版）====
+		 * 1) fail-open：缓存缺失 / 请求失败 / 超时 / 字段未知 一律放行；只有明确拿到
+		 *    ready === false（且用户没跳过）才拦这一次，并把用户带到环境适配。
+		 * 2) 只包一层 shell.submit 并原样透传 (mode, source)；绝不改 shell.actions。
+		 * 3) WeakMap 记账，重复安装幂等；ctx.effect 卸载时恢复原引用。
+		 * 4) 事件驱动：会话列表 / 工作区选择变化时补打一次，低频兜底交给调度器。 */
+		const ENV_GATE_TTL = 8000;
+		const envGateCache = { at: 0, status: null, inflight: null };
+		const envGateUi = { open: false, confirmSkip: false, busy: false };
+		const envGateSubs = new Set();
+		const submitGateOrig = new WeakMap();
+		const submitGateOrder = [];
+		let submitGateInstalled = false;
+		let submitGateReentry = false;
 
-		/** 红队发送前门禁：未就绪 → 授权并打开环境适配；可确认跳过。 */
+		function envGateWrite(patch) {
+			submitGateReentry = true;
+			try { Object.assign(envGateUi, patch || {}); } catch (err) { console.warn("[dsh-purge] envGate state:", err); }
+			for (const fn of Array.from(envGateSubs)) {
+				try { fn(); } catch (err) { console.warn("[dsh-purge] envGate listener failed:", err); }
+			}
+			submitGateReentry = false;
+		}
+
+		function refreshEnvGateStatus() {
+			if (envGateCache.inflight) return envGateCache.inflight;
+			envGateCache.inflight = fetchEnvAdaptStatus().then((r) => {
+				envGateCache.inflight = null;
+				envGateCache.at = Date.now();
+				envGateCache.status = (r && typeof r === "object") ? r : null;
+				return envGateCache.status;
+			}, () => {
+				/* 请求失败 → 状态视为未知，门禁 fail-open */
+				envGateCache.inflight = null;
+				envGateCache.at = Date.now();
+				envGateCache.status = null;
+				return null;
+			});
+			return envGateCache.inflight;
+		}
+
+		function envGateStatusFresh() {
+			return !!envGateCache.at && (Date.now() - envGateCache.at) < ENV_GATE_TTL;
+		}
+
+		/** true = 拦下这一次发送；其余一切情况都返回 false（fail-open）。 */
+		function envGateBlocksSubmit() {
+			try {
+				if (submitGateReentry) return false;
+				if (!isRedteamModeActive()) return false;
+				if (!envGateStatusFresh()) {
+					refreshEnvGateStatus();
+					return false;
+				}
+				const st = envGateCache.status;
+				if (!st) return false;
+				if (st.ready === true || st.skipped === true) return false;
+				if (st.ready !== false) return false;
+				/* 明确未就绪：只拦一次，并引导去环境适配 */
+				envGateCache.at = 0;
+				if (!readDrillAuth()) {
+					envGateWrite({ open: false, confirmSkip: false });
+					requestDrillEnv();
+				} else {
+					envGateWrite({ open: true, confirmSkip: false });
+				}
+				return true;
+			} catch (err) {
+				console.warn("[dsh-purge] env gate check failed (fail-open):", err);
+				return false;
+			}
+		}
+
+		function patchSubmitGate(shell) {
+			if (!shell || typeof shell.submit !== "function") return false;
+			if (submitGateOrig.has(shell)) return false;
+			const origSubmit = shell.submit;
+			submitGateOrig.set(shell, origSubmit);
+			submitGateOrder.push(shell);
+			const bound = origSubmit.bind(shell);
+			shell.submit = function dshpGatedSubmit(mode, source) {
+				if (envGateBlocksSubmit()) return undefined;
+				return bound(mode, source);
+			};
+			return true;
+		}
+
+		function restoreSubmitGates() {
+			while (submitGateOrder.length) {
+				const shell = submitGateOrder.pop();
+				const orig = submitGateOrig.get(shell);
+				submitGateOrig.delete(shell);
+				if (!orig) continue;
+				try { shell.submit = orig; } catch (err) { console.warn("[dsh-purge] restore shell.submit failed:", err); }
+			}
+		}
+
+		function patchSubmitGateForSession(sessionId) {
+			try {
+				const sessions = rewindSessions || (rewindHost && rewindHost.sessions);
+				const sid = sessionId || currentSessionId(sessions);
+				if (!sid) return false;
+				return patchSubmitGate(conversationInput(sid));
+			} catch (err) {
+				return false;
+			}
+		}
+
+		/** 安装一次：先补当前所有会话，之后靠 sessions.list / 工作区选择事件驱动。 */
+		function installSubmitGate(ctx) {
+			if (submitGateInstalled) return () => {};
+			submitGateInstalled = true;
+			const patchAll = () => {
+				try {
+					const sessions = rewindSessions || (rewindHost && rewindHost.sessions);
+					const snap = sessions && sessions.list && typeof sessions.list.getSnapshot === "function"
+						? sessions.list.getSnapshot()
+						: null;
+					const ids = snap && snap.ids ? Array.from(snap.ids) : [];
+					const cur = currentSessionId(sessions);
+					if (cur && ids.indexOf(cur) < 0) ids.push(cur);
+					if (!ids.length) patchSubmitGateForSession(null);
+					for (const id of ids) patchSubmitGateForSession(id);
+				} catch (err) {
+					console.warn("[dsh-purge] submit gate scan failed:", err);
+				}
+			};
+			const unwrap = (d) => {
+				try {
+					if (typeof d === "function") return d;
+					if (!d) return null;
+					if (typeof d.dispose === "function") return () => d.dispose();
+					if (typeof d.unsubscribe === "function") return () => d.unsubscribe();
+				} catch (err) { console.warn("[dsh-purge] submit gate unsubscribe:", err); }
+				return null;
+			};
+			const disposers = [];
+			patchAll();
+			try {
+				const sessions = rewindSessions || (rewindHost && rewindHost.sessions);
+				const list = sessions && sessions.list;
+				if (list && typeof list.subscribe === "function") {
+					const off = unwrap(list.subscribe(patchAll));
+					if (off) disposers.push(off);
+				}
+			} catch (err) { console.warn("[dsh-purge] sessions subscribe failed:", err); }
+			try {
+				const sel = rewindWorkspace && rewindWorkspace.selection;
+				if (sel && typeof sel.subscribe === "function") {
+					const off = unwrap(sel.subscribe(patchAll));
+					if (off) disposers.push(off);
+				}
+			} catch (err) { console.warn("[dsh-purge] workspace subscribe failed:", err); }
+			/* 低频兜底（事件在个别版本可能不触发）；调度器隐藏页面不跑，彻底卸载时清掉 */
+			disposers.push(pollScheduler.add(patchAll, 3000));
+			return () => {
+				submitGateInstalled = false;
+				for (const off of disposers) {
+					try { off(); } catch (err) { console.warn("[dsh-purge] submit gate disposer:", err); }
+				}
+				restoreSubmitGates();
+			};
+		}
+
+		/** 红队发送前门禁的 UI 部分：状态在模块级 envGate*，组件只渲染 + 订阅。
+		 * 拦不拦由 envGateBlocksSubmit（fail-open）；这里不再挂 document 监听。 */
 		function EnvAdaptSendGate() {
 			const t = useT();
-			const [open, setOpen] = useState(false);
-			const [confirmSkip, setConfirmSkip] = useState(false);
-			const [status, setStatus] = useState(null);
-			const [busy, setBusy] = useState(false);
-			const cacheRef = useRef({ at: 0, ready: false });
-			const openRef = useRef(false);
-			openRef.current = open;
-
-			const refresh = useCallback(async () => {
-				const r = await fetchEnvAdaptStatus();
-				const ready = !!(r && r.ready);
-				cacheRef.current = { at: Date.now(), ready: ready, skipped: !!(r && r.skipped) };
-				setStatus(r);
-				return r;
+			const [, forceRender] = useState(0);
+			useEffect(() => {
+				const onChange = () => forceRender((n) => n + 1);
+				envGateSubs.add(onChange);
+				/* 只在红队会话或门禁弹窗打开时才拉状态；不再开 5s 轮询循环 */
+				const stop = pollScheduler.add(() => {
+					if (!envGateUi.open && !isRedteamModeActive()) return;
+					if (envGateUi.open || !envGateStatusFresh()) refreshEnvGateStatus();
+				}, 15000);
+				return () => {
+					envGateSubs.delete(onChange);
+					stop();
+				};
 			}, []);
-
-			const blockAndOpen = useCallback(() => {
-				setConfirmSkip(false);
-				refresh();
-				/* 第一次：只走完整授权窗 → 授权后进环境适配页 */
-				if (!readDrillAuth()) {
-					setOpen(false);
-					requestDrillEnv();
-					return true;
-				}
-				/* 已授权过：只弹精简环境适配窗，不再自动拉开整块演练台 */
-				setOpen(true);
-				return true;
-			}, [refresh]);
-
-			const mustBlockSubmit = useCallback(() => {
-				if (!isRedteamModeActive()) return false;
-				const cached = cacheRef.current;
-				/* cache 过期时触发异步刷新;本次调用按最后一次 cache 判断,未知保守 block */
-				if (!cached.at || Date.now() - cached.at > 2500) {
-					refresh().catch(() => {});
-				}
-				if (cached.ready) return false;
-				blockAndOpen();
-				return true;
-			}, [blockAndOpen, refresh]);
-
-			/* 挂住宿主 SessionInputShell.submit —— 比点按钮启发式可靠。
-			 * patch 必须可逆:存 origSubmit 到 WeakMap,unmount / 依赖变更时恢复,
-			 * 否则插件禁用后 shell.submit 还是我们的 wrapper,持死 mustBlockSubmit 闭包。 */
-			useEffect(() => {
-				const patched = new WeakMap();
-				const patchedShells = [];
-				const patchShell = (shell) => {
-					if (!shell || patched.has(shell)) return;
-					if (typeof shell.submit !== "function") return;
-					const origSubmit = shell.submit;
-					const origActionsSubmit = (shell.actions && typeof shell.actions.submit === "function")
-						? shell.actions.submit
-						: null;
-					patched.set(shell, { origSubmit, origActionsSubmit });
-					patchedShells.push(shell);
-					const bound = origSubmit.bind(shell);
-					shell.submit = function gatedSubmit(mode) {
-						try {
-							if (mustBlockSubmit()) return;
-						} catch { /* 门禁异常时不吞掉发送 */ }
-						return bound(mode);
-					};
-					if (shell.actions && typeof shell.actions === "object") {
-						shell.actions.submit = () => shell.submit("queue");
-					}
-				};
-				const tick = () => {
-					try {
-						const sessions = rewindSessions || (rewindHost && rewindHost.sessions);
-						const sid = currentSessionId(sessions);
-						if (!sid) return;
-						patchShell(conversationInput(sid));
-					} catch { /* ignore */ }
-				};
-				tick();
-				const iv = window.setInterval(tick, 400);
-				return () => {
-					window.clearInterval(iv);
-					for (const shell of patchedShells) {
-						const info = patched.get(shell);
-						if (!info) continue;
-						try { shell.submit = info.origSubmit; } catch { /* ignore */ }
-						if (info.origActionsSubmit && shell.actions) {
-							try { shell.actions.submit = info.origActionsSubmit; } catch { /* ignore */ }
-						}
-					}
-					patchedShells.length = 0;
-				};
-			}, [mustBlockSubmit]);
-
-			useEffect(() => {
-				let alive = true;
-				const tick = () => {
-					if (!alive) return;
-					if (!isRedteamModeActive()) return;
-					refresh();
-				};
-				tick();
-				const iv = window.setInterval(tick, 5000);
-				return () => { alive = false; window.clearInterval(iv); };
-			}, [refresh]);
-
-			useEffect(() => {
-				const onPointer = (e) => {
-					if (!looksLikeSendControl(e.target)) return;
-					if (!mustBlockSubmit()) return;
-					e.preventDefault();
-					e.stopPropagation();
-					if (typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
-				};
-				const onKey = (e) => {
-					if (e.key !== "Enter" || e.shiftKey || e.isComposing) return;
-					const inComposer = e.target && e.target.closest
-						&& e.target.closest("[data-composer-card], [data-composer-seat], [contenteditable='true'], textarea");
-					if (!inComposer) return;
-					if (e.target.closest && e.target.closest(".dshp-dock, .dshp-auth-mask, .rt-dock, .dshp-env-gate")) return;
-					if (!mustBlockSubmit()) return;
-					e.preventDefault();
-					e.stopPropagation();
-					if (typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
-				};
-				document.addEventListener("pointerdown", onPointer, true);
-				document.addEventListener("click", onPointer, true);
-				document.addEventListener("keydown", onKey, true);
-				return () => {
-					document.removeEventListener("pointerdown", onPointer, true);
-					document.removeEventListener("click", onPointer, true);
-					document.removeEventListener("keydown", onKey, true);
-				};
-			}, [mustBlockSubmit]);
-
-			if (!open) return null;
-
+			if (!envGateUi.open) return null;
+			const status = envGateCache.status;
 			const message = (status && status.message) || t("envGate.lead");
+			const confirmSkip = envGateUi.confirmSkip;
+			const busy = envGateUi.busy;
+			const closeAll = () => envGateWrite({ open: false, confirmSkip: false, busy: false });
+			const skipEnvGate = () => {
+				envGateWrite({ busy: true });
+				fetch("/redteam/api", {
+					method: "POST",
+					headers: { "content-type": "application/json" },
+					body: JSON.stringify({ op: "platformEnvAdaptSkip", skip: true }),
+				}).then((r) => r.json()).then((r) => {
+					envGateCache.at = Date.now();
+					envGateCache.status = Object.assign({ ready: true, skipped: true }, (r && typeof r === "object") ? r : {});
+					envGateWrite({ busy: false, open: false, confirmSkip: false });
+				}).catch((err) => {
+					console.warn("[dsh-purge] env adapt skip failed:", err);
+					envGateCache.at = Date.now();
+					envGateCache.status = { ready: true, skipped: true };
+					envGateWrite({ busy: false, open: false, confirmSkip: false });
+				});
+			};
 			return h("div", { className: "dshp-auth-mask dshp-env-gate", role: "dialog", "aria-modal": "true" },
 				h("div", { className: "dshp-auth-modal", style: { width: "min(480px,100%)" } },
 					h("h2", null, t("envGate.title")),
@@ -8297,45 +8475,28 @@ body[data-ds-dark-theme] .dshp-rewind-item span{color:var(--dsw-alias-label-tert
 								h("button", {
 									key: "no",
 									type: "button",
-									onClick: () => setConfirmSkip(false),
+									onClick: () => envGateWrite({ confirmSkip: false }),
 								}, t("envGate.skipNo")),
 								h("button", {
 									key: "yes",
 									type: "button",
 									className: "primary",
 									disabled: busy,
-									onClick: () => {
-										setBusy(true);
-										fetch("/redteam/api", {
-											method: "POST",
-											headers: { "content-type": "application/json" },
-											body: JSON.stringify({ op: "platformEnvAdaptSkip", skip: true }),
-										}).then((r) => r.json()).then((r) => {
-											setBusy(false);
-											cacheRef.current = { at: Date.now(), ready: true, skipped: true };
-											setStatus(r);
-											setOpen(false);
-											setConfirmSkip(false);
-										}).catch(() => {
-											setBusy(false);
-											cacheRef.current = { at: Date.now(), ready: true, skipped: true };
-											setOpen(false);
-										});
-									},
+									onClick: skipEnvGate,
 								}, t("envGate.skipYes")),
 							]
 							: [
 								h("button", {
 									key: "skip",
 									type: "button",
-									onClick: () => setConfirmSkip(true),
+									onClick: () => envGateWrite({ confirmSkip: true }),
 								}, t("envGate.skip")),
 								h("button", {
 									key: "go",
 									type: "button",
 									className: "primary",
 									onClick: () => {
-										setOpen(false);
+										closeAll();
 										requestDrillEnv();
 									},
 								}, t("envGate.go")),
@@ -8344,20 +8505,25 @@ body[data-ds-dark-theme] .dshp-rewind-item span{color:var(--dsw-alias-label-tert
 				),
 			);
 		}
-
 		function PurgeDock() {
 			const t = useT();
 			const st = useDock();
 			const [geom, setGeom] = useState(() => loadDockGeom());
 			const [dockTheme, setDockTheme] = useState(detectHostTheme);
 			useEffect(() => {
-				const sync = () => setDockTheme(detectHostTheme());
+				const sync = () => {
+					setDockTheme(detectHostTheme());
+					/* composer 高度变化（多行输入/附件条）时重新钳制，保证不压住输入框 */
+					setGeom((g) => {
+						const next = clampDockGeom(g);
+						return (next.x === g.x && next.y === g.y && next.w === g.w && next.h === g.h) ? g : next;
+					});
+				};
 				sync();
-				const obs = new MutationObserver(sync);
-				if (document.body) obs.observe(document.body, { attributes: true, attributeFilter: ["data-ds-dark-theme", "class", "style"] });
-				obs.observe(document.documentElement, { attributes: true, attributeFilter: ["data-ds-dark-theme", "class", "style"] });
-				const timer = window.setInterval(sync, 1500);
-				return () => { obs.disconnect(); window.clearInterval(timer); };
+				/* 0.2.1：不再用 MutationObserver 盯宿主 <body>（会和 React 编辑同一批属性），
+				 * 主题跟随 / 几何钳制交给统一调度器；页面隐藏时自动暂停。 */
+				const stopTheme = pollScheduler.add(sync, 2000);
+				return () => stopTheme();
 			}, []);
 			useEffect(() => {
 				let uiTag = document.querySelector('style[data-dsh-purge-ui="1"]');
@@ -8496,6 +8662,14 @@ body[data-ds-dark-theme] .dshp-rewind-item span{color:var(--dsw-alias-label-tert
 				h("div", { className: "dshp-dock-head", onMouseDown: startDrag, title: "按住拖动面板" },
 					h("b", null, "dsh-purge"),
 					h("span", { style: { flex: 1 } }),
+					h("button", {
+						type: "button",
+						title: t("dock.reset"),
+						onClick: () => {
+							/* 复位：几何越界/被拖歪时一键回到右上默认位；也会重新避开 composer */
+							setGeom(clampDockGeom(defaultDockGeom()));
+						},
+					}, t("dock.reset")),
 					st.tab === "drill" && readDrillAuth()
 						? h("button", { type: "button", onClick: () => requestDrill("full") }, t("dock.full"))
 						: null,
@@ -8552,129 +8726,48 @@ body[data-ds-dark-theme] .dshp-rewind-item span{color:var(--dsw-alias-label-tert
 			}, t("dock.newSession"));
 		}
 
-		/** 首页：模式旁挂「dsh-purge」→ 打开插件。红队模式走模式下拉（registry 声明）。 */
-		function HeroNewSessionMount() {
-			const t = useT();
+		/** 首页 hero：走官方 list 槽 conversation.hero.options（不再往宿主 DOM 里塞节点）。 */
+		function HeroPurgeChip(props) {
+			const tHook = useT();
+			const t = (props && props.t) || tHook;
 			const st = useDock();
-			const [host, setHost] = useState(null);
-			useEffect(() => {
-				let dead = false;
-				let warnedMiss = false;
-				const ensure = () => {
-					if (dead || typeof document === "undefined") return;
-					/* 多路挂点兜底:语义化 data-* 优先,class 子串模糊匹配兜底(不绑定具体 CSS Module 哈希) */
-					const row =
-						document.querySelector('[data-dsh-hero-workspace-row]') ||
-						document.querySelector('[data-conversation-hero]') ||
-						document.querySelector('[class*="heroWorkspaceRow" i]') ||
-						document.querySelector('[class*="hero" i][class*="workspace" i][class*="row" i]');
-					if (!row) {
-						if (!warnedMiss) {
-							warnedMiss = true;
-							try { console.warn("[dsh-purge] HeroNewSessionMount: anchor row missing (host 可能改版)"); } catch { /* ignore */ }
-						}
-						setHost((prev) => (prev ? null : prev));
-						return;
-					}
-					warnedMiss = false;
-					let el = row.querySelector(":scope > .dshp-hero-chip");
-					if (!el) {
-						el = document.createElement("div");
-						el.className = "dshp-hero-chip";
-						el.setAttribute("data-testid", "dsh-purge-hero-chip");
-						row.appendChild(el);
-					}
-					setHost((prev) => (prev === el ? prev : el));
-				};
-				ensure();
-				const obs = typeof MutationObserver !== "undefined"
-					? new MutationObserver(() => ensure())
-					: null;
-				if (obs) obs.observe(document.body, { childList: true, subtree: true });
-				const iv = setInterval(ensure, 1000);
-				return () => {
-					dead = true;
-					if (obs) obs.disconnect();
-					clearInterval(iv);
-				};
-			}, []);
-			if (!host) return null;
-			const btn = h("button", {
-				type: "button",
-				className: "dshp-hero-chip-btn" + (st.open ? " on" : ""),
-				title: t("dock.newSession"),
-				onClick: () => toggleDock(),
-			},
-				st.open ? h("span", { className: "dshp-live-dot", "aria-hidden": "true" }) : null,
-				t("dock.newSession"),
+			return h("div", { className: "dshp-hero-chip", "data-testid": "dsh-purge-hero-chip" },
+				h("button", {
+					type: "button",
+					className: "dshp-hero-chip-btn" + (st.open ? " on" : ""),
+					title: t("dock.newSession"),
+					onClick: () => toggleDock(),
+				},
+					st.open ? h("span", { className: "dshp-live-dot", "aria-hidden": "true" }) : null,
+					t("dock.newSession"),
+				),
 			);
-			try {
-				const rd = require("react-dom");
-				if (rd && typeof rd.createPortal === "function") return rd.createPortal(btn, host);
-			} catch { /* host 可能没暴露 react-dom */ }
-			return null;
 		}
 
-		/** 挂在「对话 / 轨迹 / 上下文」这一排，紧挨上下文。 */
-		function TabRowPurgeMount() {
-			const t = useT();
+		/** 会话内入口：官方 list 槽 conversation.input.dock。
+		 * 0.2.1 已移除 tab 行锚点（data-conversation-tabrow / hero-workspace-row），
+		 * 原 tab 位置没有对应 list 槽 —— 入口并入 dock（降级，启动时 console.warn 说明）。
+		 * 顺带挂发送门禁：这里能拿到 sessionId，精确补对应 shell.submit。 */
+		function InputDockPurgeEntry(props) {
+			const tHook = useT();
+			const t = (props && props.t) || tHook;
 			const st = useDock();
-			const [host, setHost] = useState(null);
+			const sessionId = props && props.sessionId;
 			useEffect(() => {
-				let dead = false;
-				let warnedMiss = false;
-				const ensure = () => {
-					if (dead || typeof document === "undefined") return;
-					/* 多路挂点兜底:data-* 优先,ARIA / class 子串兜底 */
-					const row =
-						document.querySelector("[data-conversation-tabs]") ||
-						document.querySelector("[data-conversation-tabrow]") ||
-						document.querySelector("[role='tablist'][aria-label*='对话' i]") ||
-						document.querySelector("[class*='conversation' i][class*='tab' i][class*='row' i]");
-					if (!row) {
-						if (!warnedMiss) {
-							warnedMiss = true;
-							try { console.warn("[dsh-purge] TabRowPurgeMount: tab row anchor missing"); } catch { /* ignore */ }
-						}
-						setHost((prev) => (prev ? null : prev));
-						return;
-					}
-					warnedMiss = false;
-					let el = row.querySelector(":scope > .dshp-tab-chip");
-					if (!el) {
-						el = document.createElement("div");
-						el.className = "dshp-tab-chip";
-						el.setAttribute("data-testid", "dsh-purge-tab-chip");
-						row.appendChild(el);
-					}
-					setHost((prev) => (prev === el ? prev : el));
-				};
-				ensure();
-				const obs = typeof MutationObserver !== "undefined"
-					? new MutationObserver(() => ensure())
-					: null;
-				if (obs) obs.observe(document.body, { childList: true, subtree: true });
-				const iv = setInterval(ensure, 1000);
-				return () => {
-					dead = true;
-					if (obs) obs.disconnect();
-					clearInterval(iv);
-				};
-			}, []);
-			if (!host) return null;
-			const btn = h("button", {
-				type: "button",
-				className: "dshp-tab-btn" + (st.open ? " on" : ""),
-				title: st.open ? (t("dock.inSession") + " · 已开启") : (t("dock.inSession") + " · 点击打开"),
-				onClick: () => toggleDock(),
-			}, t("dock.inSession"));
-			try {
-				const rd = require("react-dom");
-				if (rd && typeof rd.createPortal === "function") return rd.createPortal(btn, host);
-			} catch { /* host 可能没暴露 react-dom */ }
-			return null;
+				patchSubmitGateForSession(sessionId);
+			}, [sessionId]);
+			return h("div", { className: "dshp-dock-entry", "data-testid": "dsh-purge-dock-entry" },
+				h("button", {
+					type: "button",
+					className: "dshp-hero-chip-btn" + (st.open ? " on" : ""),
+					title: st.open ? (t("dock.inSession") + " · 已开启") : (t("dock.inSession") + " · 点击打开"),
+					onClick: () => toggleDock(),
+				},
+					st.open ? h("span", { className: "dshp-live-dot", "aria-hidden": "true" }) : null,
+					t("dock.inSession"),
+				),
+			);
 		}
-
 
 		function installRewindUi(ctx) {
 			rewindHost = ctx;
@@ -8700,17 +8793,37 @@ body[data-ds-dark-theme] .dshp-rewind-item span{color:var(--dsw-alias-label-tert
 			// 	}),
 			// }, ContinueSafe));
 			ctx.effect(() => installRewindWatch(ctx), "dsh-purge: rewind watch");
+			ctx.effect(() => installSubmitGate(ctx), "dsh-purge: submit gate");
 		}
 
 		function apply(ctx) {
 			ctx.effect(() => ctx.locale.register(NS, { zh, en }), "dsh-purge: dictionaries");
 			const t = ctx.locale.bind(NS);
 			translate = t;
+			/* 插件自有浮层（只往 document.body 挂自己的 portal 节点，不碰宿主组件树） */
 			ctx.slots.inject("shell.overlay", () => ctx.slots.register({
 				name: "shell.overlay",
 				id: "dsh-purge-dock",
 				order: 50,
-			}, () => h(react.Fragment, null, h(WelcomeNotice), h(PurgeLauncher), h(PurgeDock), h(HeroNewSessionMount), h(TabRowPurgeMount), h(EnvAdaptSendGate))));
+			}, () => h(react.Fragment, null, h(WelcomeNotice), h(PurgeLauncher), h(PurgeDock), h(EnvAdaptSendGate))));
+			/* 首页 hero 芯片：官方 list 槽 */
+			ctx.slots.inject("conversation.hero.options", () => ctx.slots.register({
+				name: "conversation.hero.options",
+				id: "dsh-purge-hero-chip",
+				order: 60,
+				inject: () => ({ t: ctx.locale.bind(NS) }),
+			}, HeroPurgeChip));
+			/* 会话内入口：官方 list 槽（原 tab 行位置在 0.2.1 已无入口可用，降级并入 dock） */
+			ctx.slots.inject("conversation.input.dock", () => ctx.slots.register({
+				name: "conversation.input.dock",
+				id: "dsh-purge-input-entry",
+				order: 40,
+				inject: (sessionId) => ({ sessionId, t: ctx.locale.bind(NS) }),
+			}, InputDockPurgeEntry));
+			try {
+				console.warn("[dsh-purge] 降级提示：0.2.1 移除了 tab 行锚点（data-conversation-tabrow），"
+					+ "原 tab 芯片位置无对应 list 槽，入口已并入 conversation.input.dock。");
+			} catch { /* ignore */ }
 			try {
 				if (typeof ctx.inject === "function") {
 					ctx.inject(["sessions", "uiWorkspace", "workspaces", "conversation"], (host) => installRewindUi(host));

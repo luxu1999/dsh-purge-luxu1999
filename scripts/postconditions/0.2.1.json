@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "target": "dsh 0.2.1-rc.2",
+  "source": {
+    "patches": "lib/core.js ALL_PATCHES",
+    "catalog": "work/analysis/purge/patch-catalog.json",
+    "spec": "T2 DSL after:{must:[],mustNot:[]}（适配方案 §T2 / 同类Bug清单 U1-U8）",
+    "generatedAt": "2026-10-20",
+    "coverage": "条目 requireCoverage=true 时，补丁必须先完全落地（applied / already），否则该条 FAIL；未标注的条目不校验覆盖。",
+    "notes": [
+      "数据驱动：每条的 must / mustNot 都是「补丁落地后宿主 shadow 树上必须 / 必须不存在」的字面量（或正则）。",
+      "contains 默认按整个条目 files 集合累计计数，scope=all 时要求每个文件都命中。",
+      "补丁本身未落地（partial/noop/marker_only…）只算 coverage WARN，不计入 T2 FAIL —— 完整性由 verify-host.mjs 的 T1 断言负责。",
+      "条目 files 里的键必须与 lib/core.js targetFiles() 的键名一致；宿主上解析不到的键会被跳过并在报告里标出。"
+    ]
+  },
+  "postconditions": [
+    {
+      "id": "42",
+      "requireCoverage": true,
+      "name": "SETTINGS_LEGACY_API",
+      "files": ["settings"],
+      "must": [
+        {
+          "contains": "[dsh-purge] legacy settings api",
+          "why": "legacy settings API 必须在 SettingsForms 上落地（register/get/commitLegacy 一套）"
+        },
+        {
+          "contains": "plainConfig(schema(mergeLayers(options?.base ?? {}, user ?? {})))",
+          "why": "#89：options.base 为 undefined 时不能整段覆盖掉 base，且 plainConfig 必须在 validate 之前"
+        },
+        {
+          "contains": "plainConfig(registration.schema(mergeLayers(registration.base ?? {}, user ?? {})))",
+          "why": "#89：commitLegacy 路径同样要 ?? {} 兜底，否则 undefined base 丢下层配置"
+        },
+        {
+          "contains": "this.ownerContext.emit(\"settings/updated\"",
+          "why": "legacy 写入必须发 settings/updated 事件，否则 UI/订阅方收不到变更"
+        }
+      ],
+      "mustNot": [
+        {
+          "contains": "mergeLayers(options?.base, user)",
+          "why": "旧写法在 options.base 为 undefined 时会把 base 层整个丢掉（#89 回归守卫）"
+        },
+        {
+          "contains": "mergeLayers(registration.base, user)",
+          "why": "旧写法同上（registration.base 为 undefined 时丢 base 层）"
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "requireCoverage": true,
+      "name": "HARNESS_IDENTITY_STRIP",
+      "files": ["system-prompt"],
+      "must": [
+        {
+          "contains": "[dsh-purge] identity stripped",
+          "why": "身份句必须被剥掉并留下可审计标记"
+        },
+        {
+          "contains": "includeHarnessIdentity: z.boolean().default(false)",
+          "why": "配置默认值必须为 false（不再默认注入 Harness 身份）"
+        },
+        {
+          "contains": "if (config.includeHarnessIdentity ?? false)",
+          "why": "运行时兜底也必须为 false（旧调用方不传配置时不能注入身份）"
+        }
+      ],
+      "mustNot": [
+        {
+          "contains": "includeHarnessIdentity: z.boolean().default(true)",
+          "why": "默认 true 会重新注入身份（回归）"
+        },
+        {
+          "contains": "if (config.includeHarnessIdentity ?? true)",
+          "why": "?? true 兜底会重新注入身份（回归）"
+        },
+        {
+          "contains": "You are an AI agent powered by DeepSeek Harness.",
+          "why": "身份句本体不允许残留"
+        }
+      ]
+    },
+    {
+      "id": "51",
+      "requireCoverage": true,
+      "name": "FRESH_SESSION_FULL_ACCESS",
+      "files": ["permission-presets", "permission-presets-types"],
+      "must": [
+        {
+          "contains": "sandboxMode === \"danger-full-access\"",
+          "why": "danger-full-access 部署下新会话必须直接落到 full-access 预设"
+        },
+        {
+          "contains": "[dsh-purge] fresh session follows full-access deployment",
+          "why": "同上，保留审计标记"
+        },
+        {
+          "contains": "wider retries are auto-granted.",
+          "why": "预设说明必须与现实一致：更宽操作自动放行，不再要求审批"
+        },
+        {
+          "contains": "[dsh-purge] official approval teaching removed",
+          "why": "官方审批教学文案的移除要留痕"
+        }
+      ],
+      "mustNot": [
+        {
+          "contains": "wider retries require approval.",
+          "why": "旧审批教学文案不允许残留（会诱导模型发起被禁用的审批）"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "requireCoverage": true,
+      "name": "APPROVAL_NEVER_SENTENCE",
+      "files": ["user-approval", "user-approval-invariant"],
+      "must": [
+        {
+          "contains": "Approval prompts are disabled in this session: actions run with full access. You may request sandbox escalation freely when a wider operation needs it.",
+          "why": "审批禁用说明必须改成 full-access 口径，不能再教模型“不要申请提权”"
+        }
+      ],
+      "mustNot": [
+        {
+          "contains": "actions that require approval are rejected automatically",
+          "why": "旧口径与新部署矛盾（会被自动拒绝的说法已不成立）"
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "requireCoverage": true,
+      "name": "APPROVAL_NEVER_SENTENCE_BYPASS",
+      "files": ["user-approval-code"],
+      "must": [
+        {
+          "contains": "Approval requests are auto-granted in this session (approval bypass, approval policy: never): no approval prompt will appear; request sandbox escalation freely with a one-sentence justification.",
+          "why": "代码侧审批说明必须改成 bypass 口径（自动放行 + 允许自由申请提权）"
+        }
+      ],
+      "mustNot": [
+        {
+          "contains": "actions that require approval are rejected automatically",
+          "why": "旧口径（自动拒绝）不允许残留"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "requireCoverage": true,
+      "name": "SYSTEM_PROMPT_PERSONA",
+      "files": ["web-app", "headless", "preset-acp-app", "preset-sdk-app"],
+      "must": [
+        {
+          "contains": "personaPrefix: \"\"",
+          "why": "已落地的预设必须把 persona 前缀清空；0.2.1 的 web-app 主 cordis.patch.yml 仍有 personaPrefix 段",
+          "scope": "any"
+        }
+      ],
+      "mustNot": [
+        {
+          "contains": "You are a coding agent powered by the {{model}} model.",
+          "why": "官方身份句不允许在任何已适配的预设 YAML 里残留（presets/standard.patch.yml 在 0.2.1 已无该段，按 Lead 指示跳过不查，由 #43/#63 的落地负责）"
+        }
+      ]
+    }
+  ]
+}
+

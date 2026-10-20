@@ -1,6 +1,6 @@
 {
   "name": "dsh-purge",
-  "version": "1.1.71",
+  "version": "1.1.72",
   "description": "DeepSeek Harness 破甲：让所有模型都能破甲，不同模型可换不同提示词；默认提示词面向国模「小码酱」。Jailbreak for every model — swap prompts per model. 求 Star 收藏 ⭐ 如要二开，请查看署名要求部分",
   "type": "module",
   "main": "lib/index.js",
@@ -23,6 +23,7 @@
     "!lib/default-prompt-inject.md",
     "bin",
     "docs",
+    "hosts",
     "presets",
     "skills",
     "scripts",
@@ -35,7 +36,10 @@
   ],
   "scripts": {
     "embed-prompt": "node scripts/embed-default-prompt.mjs",
-    "build:client": "node scripts/build-client.mjs"
+    "build:client": "node scripts/build-client.mjs",
+    "test:host": "node scripts/verify-host.mjs",
+    "test:ui": "node scripts/audit-ui-contract.mjs",
+    "test:post": "node scripts/t2-postconditions.mjs"
   },
   "license": "MIT",
   "keywords": [
@@ -69,9 +73,7 @@
       "platform": "web",
       "inject": [
         "@deepseek-ai/dsh-client-connection",
-        "@deepseek-ai/dsh-client-runtime",
         "@deepseek-ai/dsh-client-locale",
-        "@deepseek-ai/dsh-client-ui-slots",
         "@deepseek-ai/dsh-client-ui-settings"
       ]
     },
@@ -89,7 +91,8 @@
     "@deepseek-ai/cordis": "^4.0.1"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=18",
+    "dsh": "^0.2.1-rc.2"
   },
-  "dshTarget": "0.2.0-rc.2"
+  "dshTarget": "0.2.1-rc.2"
 }

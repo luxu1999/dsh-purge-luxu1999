@@ -1,0 +1,20 @@
+{
+  "dsh": "0.2.1-rc.2",
+  "runtime": "@deepseek-ai/dsh-desktop-runtime",
+  "shell": "@deepseek-ai/dsh-desktop",
+  "electron": "44.7.0",
+  "buildCommit": "332895e0f7c9d4dbfb29729f5eb367fa263ff986",
+  "notes": "DSH 0.2.1-rc.2 宿主指纹。指纹只做漂移提示，版本闸门只认 dsh 版本号；打补丁后文件哈希本来就会变。",
+  "fingerprints": {
+    "dsh-app-boot/lib/index.js": "5135179ac810e4f626f32ec3bdc3293dc7d2028e8aa92e5e0c006f1a33b78e76",
+    "dsh-client-ui-conversation/lib/client.js": "843dbcd884e05d77e525bf84b9e6dce180fd49ac8486a3c75591c291f09c9afa",
+    "dsh-base/cordis.patch.yml": "a2cc57868a4d016609801e28781262515483dde29b41c2742d9a3b27a6f52f77",
+    "dsh-settings/lib/index.js": "9432b872597b7a31473072eb38a55979ab23375c76bd1d86d751388a692a0136",
+    "dsh-agent-instructions/lib/index.js": "4011f6e4c08228601bd4348ac78e322913142264f6e491ffdf9dcfda97393988",
+    "dsh-agent-loop/lib/index.js": "cf57e3ecd487ac5c2553455aaa5cef2c6fb41e6bd61be5aa455675d1d7193033",
+    "dsh-harness-dev-context/lib/index.js": "c384040ee0aeb3a083f50e0cdd4afe7e6f37baa856c78cee2a496a1843885769",
+    "dsh-llm-pi-ai/lib/index.js": "99b5c20830a52f69641df8a18a39206079b0c725201958cce2c4a934f1d4f7cd",
+    "dsh-system-prompt/lib/index.js": "7be9f7aafbf345d01ddcc12fd297b16e9a1d41283a6a04073b867becca0bf020",
+    "dsh-tools/lib/index.js": "1e53932e7c4213ea24a7d87f06960b7a7702cb21f8a5741c97242b4a470a442a"
+  }
+}

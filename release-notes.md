@@ -1,3 +1,29 @@
+# 1.1.72
+
+## 中文
+
+- 版本 **1.1.72**，适配 **dsh 0.2.1-rc.2**（官方桌面 EXE / 官方 `dsh web`）。
+- 新增宿主版本闸门：`package.json` 写 `engines.dsh`，运行时读宿主自己的 `dsh/package.json` 比对 `hosts/0.2.1-rc.2.json`；不在支持列表里**直接拒绝改动**并给出中文原因，不再默默「能套多少套多少」。
+- 补丁层按 0.2.1 重写：82 条里 **61 条可应用**、**9 条移除**、**7 条因宿主版本不支持**、5 条只在桌面壳评估。`#56` `#77` 不再改写宿主前端 bundle（`dsh-client-ui-conversation/lib/client.js` 的 sha256 与原始完全一致），避免模块版本失效导致输入框消失。
+- `strictFiles` 默认 true：一个文件里适用锚点只命中一部分时**绝不写盘**，状态报 `pattern_partial`；marker 只认 `[dsh-purge:<id>:v2]`，且写盘成功才追加。
+- 侧栏界面修复：新会话芯片改走官方 list 槽 `conversation.hero.options`，输入区入口走 `conversation.input.dock`，不再 `appendChild` 进 React 管理的 DOM、不再用 body `MutationObserver` + 1s 轮询。
+- 提交门禁改 fail-open：只有服务端明确回 `ready === false` 才拦，TTL 8s；只包一层 `shell.submit`，事件驱动刷新，删掉 400ms/5000ms 轮询和 document 捕获监听。
+- 悬浮面板不再与输入框相交（几何钳制 + 复位按钮），z-index 全部降到 1000 以下；8 个定时器收敛到单个调度器（页面不可见自动暂停）。
+- 修复 `backupAll` 在 Windows 上的真 bug：原实现先 `openSync(bak,"wx")` 占位再 rename 覆盖，Windows 不允许覆盖已存在文件 → 全部 EPERM、备份 0 成功。改为先删旧 `.dshpurge.bak` 再原子改名。
+- 新增三个离线校验脚本：`scripts/verify-host.mjs`（逐补丁预演 + 语法/YAML + 二次 apply 幂等 + revert 字节还原 + 宿主未被改）、`scripts/audit-ui-contract.mjs`（UI 契约 R1–R8）、`scripts/t2-postconditions.mjs`（应用后置条件）。
+
+## English
+
+- **1.1.72**, adapted to **dsh 0.2.1-rc.2** (official desktop EXE / official `dsh web`).
+- New host version gate: `engines.dsh` in the manifest plus a runtime check of the host's own `dsh/package.json` against `hosts/0.2.1-rc.2.json`; unsupported hosts are **refused** with an explanation instead of half-applying patches.
+- Patch layer rewritten for 0.2.1: of 82 patches, **61 apply**, **9 removed**, **7 unsupported by this host**, 5 desktop-shell only. `#56`/`#77` no longer rewrite the host client bundle (`dsh-client-ui-conversation/lib/client.js` keeps its original sha256), so host module revisions never invalidate and the composer cannot disappear.
+- `strictFiles` now defaults to true: a file with only some anchors matching is **never written** and reports `pattern_partial`; markers are `[dsh-purge:<id>:v2]` and only appended after a successful write.
+- UI fixes: the new-session chip uses the official `conversation.hero.options` list slot, the input entry uses `conversation.input.dock`, no more `appendChild` into React-managed DOM and no body `MutationObserver` + 1s polling.
+- Submit gate is fail-open (blocks only on an explicit `ready === false`, 8s TTL), wraps `shell.submit` once, refreshes on events; the 400ms/5000ms pollers and document capture listeners are gone.
+- The floating dock never intersects the composer (geometry clamping plus a reset button), every z-index is below 1000, and eight timers collapsed into one scheduler that pauses while the page is hidden.
+- Fixed a real Windows bug in `backupAll`: the old code created the `.dshpurge.bak` placeholder with `openSync(..., "wx")` and then renamed over it; Windows refuses to overwrite, so every backup failed with EPERM. It now unlinks the stale backup and renames atomically.
+- Three offline verification scripts: `scripts/verify-host.mjs` (dry-run every patch, syntax/YAML, idempotent second apply, byte-identical revert, host untouched), `scripts/audit-ui-contract.mjs` (UI contract R1-R8), `scripts/t2-postconditions.mjs` (T2 post-conditions).
+
 # 1.1.71
 
 ## 中文
